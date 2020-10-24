@@ -59,13 +59,13 @@ export default function OrphanageDetails() {
 
       <View style={styles.detailsContainer}>
         <Text style={styles.title}>{orphanage.name}</Text>
-        <Text style={styles.description}>Presta assistência a crianças de 06 a 15 anos que se encontre em situação de risco e/ou vulnerabilidade social.</Text>
+        <Text style={styles.description}>{orphanage.about}</Text>
       
         <View style={styles.mapContainer}>
           <MapView 
             initialRegion={{
-              latitude: -27.2092052,
-              longitude: -49.6401092,
+              latitude: orphanage.latitude,
+              longitude: orphanage.longitude,
               latitudeDelta: 0.008,
               longitudeDelta: 0.008,
             }} 
@@ -78,8 +78,8 @@ export default function OrphanageDetails() {
             <Marker 
               icon={mapMarkerImg}
               coordinate={{ 
-                latitude: -27.2092052,
-                longitude: -49.6401092
+                latitude: orphanage.latitude,
+                longitude: orphanage.longitude,
               }}
             />
           </MapView>
@@ -92,12 +92,12 @@ export default function OrphanageDetails() {
         <View style={styles.separator} />
 
         <Text style={styles.title}>Instruções para visita</Text>
-        <Text style={styles.description}>Venha como se sentir a vontade e traga muito amor e paciência para dar.</Text>
+        <Text style={styles.description}>{orphanage.instructions}</Text>
 
         <View style={styles.scheduleContainer}>
           <View style={[styles.scheduleItem, styles.scheduleItemBlue]}>
             <Feather name="clock" size={40} color="#2AB5D1" />
-            <Text style={[styles.scheduleText, styles.scheduleTextBlue]}>Segunda à Sexta 8h às 18h</Text>
+            <Text style={[styles.scheduleText, styles.scheduleTextBlue]}>Segunda à sexta {orphanage.opening_hours}</Text>
           </View>
           <View style={[styles.scheduleItem, styles.scheduleItemGreen]}>
             <Feather name="info" size={40} color="#39CC83" />
@@ -105,10 +105,10 @@ export default function OrphanageDetails() {
           </View>
         </View>
 
-        <RectButton style={styles.contactButton} onPress={() => {}}>
+        {/*<RectButton style={styles.contactButton} onPress={() => {}}>
           <FontAwesome name="whatsapp" size={24} color="#FFF" />
           <Text style={styles.contactButtonText}>Entrar em contato</Text>
-        </RectButton>
+            </RectButton>*/}
       </View>
     </ScrollView>
   )
