@@ -1,20 +1,19 @@
 import React from 'react'
 import { View, StyleSheet, Text } from 'react-native'
 import { BorderlessButton } from 'react-native-gesture-handler'
- import { Feather } from '@expo/vector-icons' 
-import { useNavigation } from '@react-navigation/native'
+import { Feather } from '@expo/vector-icons' 
+import { StackHeaderProps } from '@react-navigation/stack';
 
-interface HeaderProps {
+interface HeaderProps extends StackHeaderProps {
     title: string
     showCancel?: boolean
 }
 
-export default function Header({ title, showCancel = true }: HeaderProps) {
-    const navigation = useNavigation()
-
-    function handleGoBackToHomePage() {
-        navigation.navigate('OrphanagesMap')
+export default function Header({ showCancel = true, title, navigation }: HeaderProps) {
+    function handleCancelCreateOrphanage() {
+      navigation.navigate('OrphanagesMap');
     }
+
     return (
         <View style={styles.container}>
             <BorderlessButton onPress={navigation.goBack}>
@@ -24,7 +23,7 @@ export default function Header({ title, showCancel = true }: HeaderProps) {
             <Text style={styles.title}>{title}</Text>
 
             { showCancel ? (
-                <BorderlessButton onPress={handleGoBackToHomePage}>
+                <BorderlessButton onPress={handleCancelCreateOrphanage}>
                     <Feather name='x'  size={24} color="#ff669d" />
                 </BorderlessButton>
             ) : (
