@@ -1,39 +1,52 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { View, StyleSheet, Dimensions, Text } from 'react-native';
-
 import { useNavigation } from '@react-navigation/native';
 import { RectButton } from 'react-native-gesture-handler';
-import MapView, { Marker } from 'react-native-maps';
+import MapView, { Marker, MapEvent } from 'react-native-maps';
 
-import mapMarkerImg from '../../images/mapMarker.png';
+import mapMarkerImg from '../../images/mapMarker.png'
 
 export default function SelectMapPosition() {
   const navigation = useNavigation();
+  const [position, setPosition] = useState({ latitude: 0, longitude: 0})
+
+  function handleSelectMapPosition(event: MapEvent){
+    setPosition(event.nativeEvent.coordinate)
+  }
 
   function handleNextStep() {
-    navigation.navigate('OrphanageData');
+    navigation.navigate('OrphanageData', { position });
   }
 
   return (
     <View style={styles.container}>
       <MapView 
         initialRegion={{
-          latitude: -27.2092052,
-          longitude: -49.6401092,
-          latitudeDelta: 0.008,
-          longitudeDelta: 0.008,
+          latitude: -25.4459194,
+          longitude: -49.2647987,
+          latitudeDelta: 0.2,
+          longitudeDelta: 0.2,
         }}
         style={styles.mapStyle}
-      >
-        <Marker 
-          icon={mapMarkerImg}
-          coordinate={{ latitude: -27.2092052, longitude: -49.6401092 }}
-        />
+        onPress={handleSelectMapPosition}>
+        { position.latitude != 0 &&
+          (
+            <Marker 
+              icon={mapMarkerImg}
+              coordinate={{ latitude: position.latitude, longitude: position.longitude }}
+            />
+          )
+        }
       </MapView>
-
-      <RectButton style={styles.nextButton} onPress={handleNextStep}>
-        <Text style={styles.nextButtonText}>Próximo</Text>
-      </RectButton>
+      
+      { position.latitude != 0 && 
+        (
+          <RectButton style={styles.nextButton} onPress={handleNextStep}>
+            <Text style={styles.nextButtonText}>Próximo</Text>
+          </RectButton>
+        )
+      }
+      
     </View>
   )
 }
