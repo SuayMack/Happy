@@ -72,25 +72,25 @@
   margin-top: 24px;
 }
 
-.orphanage-details .orphanage-details-content .map-container {
+.orphanage-details .orphanage-details-content .map-home {
   margin-top: 64px;
   background: #E6F7FB;
   border: 1px solid #B3DAE2;
   border-radius: 20px;
 }
 
-.orphanage-details .orphanage-details-content .map-container footer {
+.orphanage-details .orphanage-details-content .map-home footer {
   padding: 20px 0;
   text-align: center;
 }
 
-.orphanage-details .orphanage-details-content .map-container footer a {
+.orphanage-details .orphanage-details-content .map-home footer a {
   line-height: 24px;
   color: #0089A5;
   text-decoration: none;
 }
 
-.orphanage-details .orphanage-details-content .map-container .leaflet-container {
+.orphanage-details .orphanage-details-content .map-home .leaflet-home {
   border-bottom: 1px solid #DDE3F0;
   border-radius: 20px;
 }
