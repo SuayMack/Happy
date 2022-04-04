@@ -1,7 +1,7 @@
 # Happy
 
 <h1 align="center">
-    <img alt="Happy" title="Happy" src=".github/https://github.com/SuayMack/Happy/blob/main/home.png" />
+    <img alt="Happy" title="Happy" src="https://github.com/SuayMack/Happy/blob/main/home.png" />
 </h1>
 
 <p align="center">
